@@ -17,7 +17,7 @@ const [subjectCode, setSubjectCode] = useState(null);
 
   const fetchChatResponse = async (promptId, input = null) => {
     try {
-      const res = await axios.post('http://localhost:3000/chat/select', { promptId, input });
+      const res = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/select', { promptId, input });
 
       console.log('➡️ Response from backend:', res.data);
 
@@ -68,7 +68,7 @@ const handleSubmit = async (e) => {
   try {
     // Step 1: Enter registration number
     if (conversationState === 'registrationNo') {
-      const res = await axios.post('http://localhost:3000/chat/select', {
+      const res = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/select', {
         promptId,
         input: userInput,
         registrationNo: userInput
@@ -91,7 +91,7 @@ const handleSubmit = async (e) => {
 
     // Step 2: Enter mobile number
     if (conversationState === 'mobileNo') {
-      const res = await axios.post('http://localhost:3000/chat/select', {
+      const res = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/select', {
         promptId,
         input: userInput,
         registrationNo: userData.registrationNo,
@@ -112,7 +112,7 @@ const handleSubmit = async (e) => {
 
     // Step 3: Enter OTP
     if (conversationState === 'otp') {
-      const res = await axios.post('http://localhost:3000/chat/select', {
+      const res = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/select', {
         promptId,
         input: userInput,
         registrationNo: userData.registrationNo,
@@ -144,7 +144,7 @@ const handleSubmit = async (e) => {
         complaintStatus: 'Pending'
       };
 
-      const response = await axios.post('http://localhost:3000/chat/info', complaintData);
+      const response = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/info', complaintData);
 
       setMessages(prev => [
         ...prev,
@@ -158,7 +158,7 @@ const handleSubmit = async (e) => {
 
     // Admission Schedule flow
     if (conversationState === 'admissionSchedule') {
-      const res = await axios.post('http://localhost:3000/chat/select', {
+      const res = await axios.post('https://chatbot-backend-1-3rub.onrender.com/chat/select', {
         promptId,
         input: userInput,
         subjectCode: true
